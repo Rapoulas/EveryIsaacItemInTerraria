@@ -26,4 +26,26 @@ Items: {
 			Grants your projectiles homing capabilities
 			'''
 	}
+
+	CricketsHead4: {
+		DisplayName: Cricket's Head
+		Tooltip:
+			'''
+			'Dmg Up'
+			+5 Damage
+			x1.5 Damage Multiplier
+			'''
+	}
+
+	MyReflection5: {
+		DisplayName: My Reflection
+		Tooltip:
+			'''
+			'Boomerant Tears + Dmg Up + Luck Down'
+			1.3x Melee Weapon Range
+			+5 Damage
+			-10% Luck
+			x1.6 Projectile speed multiplier
+			'''
+	}
 }

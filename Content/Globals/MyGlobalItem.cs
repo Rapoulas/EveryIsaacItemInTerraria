@@ -16,5 +16,10 @@ namespace IsaacItems.Content.Globals
             float tearMultiplier = 1/player.GetModPlayer<MyPlayer>().tearStat;
             return tearMultiplier;
         }
+
+        public override void ModifyItemScale(Item item, Player player, ref float scale)
+        {
+            scale += player.GetModPlayer<MyPlayer>().extraRange;
+        }
     }
 }

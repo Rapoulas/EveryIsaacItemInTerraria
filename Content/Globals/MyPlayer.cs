@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using System;
+using Microsoft.Xna.Framework.Media;
 
 namespace IsaacItems.Content.Globals
 {
@@ -11,20 +12,35 @@ namespace IsaacItems.Content.Globals
         public Item hasSadOnion;
         public Item hasInnerEye;
         public Item hasSpoonBender;
+        public Item hasCricketsHead;
+        public Item hasMyReflection;
         #endregion
 
         #region player stats
         public float tearStat = 1;
         public int extraTearCount = 0;
         public bool homingTears = false;
+        public float damageMult = 1;
+        public int extraFlatDamage = 0;
+        public float extraRange = 0;
+        public float luckMult = 1;
+        public float shotSpeedMult = 1;
         #endregion
         public override void ResetEffects(){
             tearStat = 1;
-            homingTears = false;
             extraTearCount = 0;
+            homingTears = false;
+            damageMult = 1;
+            extraFlatDamage = 0;
+            extraRange = 0;
+            luckMult = 1;
+            shotSpeedMult = 1;
+            
             hasSadOnion = null;
             hasInnerEye = null;
             hasSpoonBender = null;
+            hasCricketsHead = null;
+            hasMyReflection = null;
         }
 
         public override void PostUpdateEquips()
@@ -39,6 +55,22 @@ namespace IsaacItems.Content.Globals
             if (hasSpoonBender != null ){
                 homingTears = true;
             }
+            if (hasCricketsHead != null){
+                extraFlatDamage += 5;
+                damageMult *= 1.5f;
+            }
+            if (hasMyReflection != null){
+                extraFlatDamage += 5;
+                luckMult *= 0.9f;
+                extraRange += 0.15f;
+                extraRange *= 2;
+                shotSpeedMult *= 1.6f;
+            }
+
+            if (extraFlatDamage > 0 || damageMult > 1){
+                Player.GetDamage(DamageClass.Generic).Base += extraFlatDamage;
+                Player.GetDamage(DamageClass.Generic) *= damageMult;
+            }
 
             HomingProj();
         }
@@ -49,6 +81,12 @@ namespace IsaacItems.Content.Globals
                 ExtraTear(source, position, velocity, type, damage, knockback);
             }
             return base.Shoot(item, source, position, velocity, type, damage, knockback);
+        }
+
+        public override void ModifyLuck(ref float luck)
+        {
+            luck *= luckMult;
+            base.ModifyLuck(ref luck);
         }
 
         void ExtraTear(EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback){
