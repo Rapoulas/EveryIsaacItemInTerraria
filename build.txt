@@ -1,0 +1,3 @@
+displayName = EVERY Isaac Item
+author = Rapoulas
+version = 0.1

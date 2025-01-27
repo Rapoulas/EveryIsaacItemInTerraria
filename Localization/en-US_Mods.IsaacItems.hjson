@@ -1,0 +1,29 @@
+Items: {
+	SadOnion1: {
+		DisplayName: Sad Onion
+		Tooltip:
+			'''
+			'Tears Up'
+			Increases weapon use speed by 15%
+			'''
+	}
+
+	InnerEye2: {
+		DisplayName: Inner Eye
+		Tooltip:
+			'''
+			'Triple Shot'
+			Fires +2 extra projectiles
+			Lowers weapon use speed by 0.51x
+			'''
+	}
+
+	SpoonBender3: {
+		DisplayName: Spoon Bender
+		Tooltip:
+			'''
+			'Homing Shots'
+			Grants your projectiles homing capabilities
+			'''
+	}
+}
