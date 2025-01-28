@@ -19,7 +19,7 @@ namespace IsaacItems.Content.Globals
 
         public override void ModifyItemScale(Item item, Player player, ref float scale)
         {
-            scale += player.GetModPlayer<MyPlayer>().extraRange;
+            scale += player.GetModPlayer<MyPlayer>().extraRange - 0.3f;
         }
     }
 }

@@ -42,10 +42,22 @@ Items: {
 		Tooltip:
 			'''
 			'Boomerant Tears + Dmg Up + Luck Down'
-			1.3x Melee Weapon Range
+			+1.5 Range
+			2x Range
 			+5 Damage
 			-10% Luck
 			x1.6 Projectile speed multiplier
+			'''
+	}
+
+	NumberOne6: {
+		DisplayName: Number One
+		Tooltip:
+			'''
+			'Tears Up + Range Down'
+			Increases weapon use speed by 30%
+			-1.5 Range
+			0.8x Range
 			'''
 	}
 }

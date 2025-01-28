@@ -14,11 +14,21 @@ namespace IsaacItems.Content.Globals
         
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            if (player.GetModPlayer<MyPlayer>().shotSpeedMult > 1){
-                projectile.velocity *= player.GetModPlayer<MyPlayer>().shotSpeedMult;
-            }
-            if (player.GetModPlayer<MyPlayer>().hasMyReflection != null && projectile.owner == Main.myPlayer){
-                startVelocity[projectile.whoAmI] = projectile.velocity;
+            if (projectile.owner == Main.myPlayer){
+                if (player.GetModPlayer<MyPlayer>().shotSpeedMult > 1){
+                    projectile.velocity *= player.GetModPlayer<MyPlayer>().shotSpeedMult;
+                }
+                if (player.GetModPlayer<MyPlayer>().hasMyReflection != null){
+                    startVelocity[projectile.whoAmI] = projectile.velocity;
+                }
+                
+                int timeLeftMult = 1 + (int)(player.GetModPlayer<MyPlayer>().extraRange - 0.3f);
+                if (timeLeftMult < 0){
+                    projectile.timeLeft /= timeLeftMult * -1;
+                }
+                if (timeLeftMult > 0){
+                    projectile.timeLeft *= timeLeftMult;
+                }
             }
         }
 

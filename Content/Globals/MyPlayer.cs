@@ -14,25 +14,30 @@ namespace IsaacItems.Content.Globals
         public Item hasSpoonBender;
         public Item hasCricketsHead;
         public Item hasMyReflection;
+        public Item hasNumberOne;
         #endregion
 
         #region player stats
         public float tearStat = 1;
+        public float tearStatMulti = 1;
         public int extraTearCount = 0;
         public bool homingTears = false;
         public float damageMult = 1;
         public int extraFlatDamage = 0;
-        public float extraRange = 0;
+        public float extraRange = 0.3f;
+        public float extraRangeMult = 1;
         public float luckMult = 1;
         public float shotSpeedMult = 1;
         #endregion
         public override void ResetEffects(){
             tearStat = 1;
+            tearStatMulti = 1;
             extraTearCount = 0;
             homingTears = false;
             damageMult = 1;
             extraFlatDamage = 0;
-            extraRange = 0;
+            extraRange = 0.3f;
+            extraRangeMult = 1;
             luckMult = 1;
             shotSpeedMult = 1;
             
@@ -41,6 +46,7 @@ namespace IsaacItems.Content.Globals
             hasSpoonBender = null;
             hasCricketsHead = null;
             hasMyReflection = null;
+            hasNumberOne = null;
         }
 
         public override void PostUpdateEquips()
@@ -63,8 +69,13 @@ namespace IsaacItems.Content.Globals
                 extraFlatDamage += 5;
                 luckMult *= 0.9f;
                 extraRange += 0.15f;
-                extraRange *= 2;
+                extraRangeMult *= 2;
                 shotSpeedMult *= 1.6f;
+            }
+            if (hasNumberOne != null){
+                extraRange -= 0.15f;
+                extraRangeMult *= 0.8f;
+                tearStat += 0.3f;
             }
 
             if (extraFlatDamage > 0 || damageMult > 1){
@@ -72,6 +83,8 @@ namespace IsaacItems.Content.Globals
                 Player.GetDamage(DamageClass.Generic) *= damageMult;
             }
 
+            extraRange *= extraRangeMult;
+            tearStat *= tearStatMulti;
             HomingProj();
         }
 
