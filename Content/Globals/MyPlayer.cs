@@ -15,6 +15,7 @@ namespace IsaacItems.Content.Globals
         public Item hasCricketsHead;
         public Item hasMyReflection;
         public Item hasNumberOne;
+        public Item hasBloodOfTheMartyr;
         #endregion
 
         #region player stats
@@ -32,21 +33,23 @@ namespace IsaacItems.Content.Globals
         public override void ResetEffects(){
             tearStat = 1;
             tearStatMulti = 1;
-            extraTearCount = 0;
-            homingTears = false;
-            damageMult = 1;
             extraFlatDamage = 0;
+            damageMult = 1;
             extraRange = 0.3f;
             extraRangeMult = 1;
             luckMult = 1;
             shotSpeedMult = 1;
             
+            homingTears = false;
+            extraTearCount = 0;
+
             hasSadOnion = null;
             hasInnerEye = null;
             hasSpoonBender = null;
             hasCricketsHead = null;
             hasMyReflection = null;
             hasNumberOne = null;
+            hasBloodOfTheMartyr = null;
         }
 
         public override void PostUpdateEquips()
@@ -76,6 +79,9 @@ namespace IsaacItems.Content.Globals
                 extraRange -= 0.15f;
                 extraRangeMult *= 0.8f;
                 tearStat += 0.3f;
+            }
+            if (hasBloodOfTheMartyr != null){
+                extraFlatDamage += 10;
             }
 
             if (extraFlatDamage > 0 || damageMult > 1){

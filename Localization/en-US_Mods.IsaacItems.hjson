@@ -60,4 +60,13 @@ Items: {
 			0.8x Range
 			'''
 	}
+
+	BloodOfTheMartyr7: {
+		DisplayName: Blood Of The Martyr
+		Tooltip:
+			'''
+			'Dmg Up'
+			+10 Damage
+			'''
+	}
 }
