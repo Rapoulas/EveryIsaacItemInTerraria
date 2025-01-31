@@ -69,4 +69,15 @@ Items: {
 			+10 Damage
 			'''
 	}
+
+	BrotherBobby8: {
+		DisplayName: Brother Bobby
+		Tooltip: Spawns a familiar that follows you around shooting tears that deal 5 damage
+	}
+}
+
+Projectiles: {
+	BrotherBobbyProj.DisplayName: Brother Bobby Proj
+	Tear.DisplayName: Tear
+	TearSplash.DisplayName: Tear Splash
 }

@@ -4,6 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework.Media;
+using IsaacItems.Content.Familiars;
 
 namespace IsaacItems.Content.Globals
 {
@@ -16,6 +17,7 @@ namespace IsaacItems.Content.Globals
         public Item hasMyReflection;
         public Item hasNumberOne;
         public Item hasBloodOfTheMartyr;
+        public Item hasBrotherBobby;
         #endregion
 
         #region player stats
@@ -29,6 +31,7 @@ namespace IsaacItems.Content.Globals
         public float extraRangeMult = 1;
         public float luckMult = 1;
         public float shotSpeedMult = 1;
+        public int conjoinedProgress;
         #endregion
         public override void ResetEffects(){
             tearStat = 1;
@@ -42,6 +45,7 @@ namespace IsaacItems.Content.Globals
             
             homingTears = false;
             extraTearCount = 0;
+            conjoinedProgress = 0;
 
             hasSadOnion = null;
             hasInnerEye = null;
@@ -50,6 +54,7 @@ namespace IsaacItems.Content.Globals
             hasMyReflection = null;
             hasNumberOne = null;
             hasBloodOfTheMartyr = null;
+            hasBrotherBobby = null;
         }
 
         public override void PostUpdateEquips()
@@ -82,6 +87,12 @@ namespace IsaacItems.Content.Globals
             }
             if (hasBloodOfTheMartyr != null){
                 extraFlatDamage += 10;
+            }
+            if (hasBrotherBobby != null){
+                conjoinedProgress += 1;
+                if (Player.ownedProjectileCounts[ModContent.ProjectileType<BrotherBobbyProj>()] <= 0){
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<BrotherBobbyProj>(), 0, 0, Player.whoAmI);
+                }
             }
 
             if (extraFlatDamage > 0 || damageMult > 1){
