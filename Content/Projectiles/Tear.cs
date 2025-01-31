@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -27,6 +28,15 @@ namespace IsaacItems.Content.Projectiles
                 Projectile.velocity.Y += 0.15f;
                 Projectile.velocity.X *= 0.98f;
             }
+        }
+
+        public override void OnSpawn(IEntitySource source)
+        {
+            SoundStyle TearShoot = new($"{nameof(IsaacItems)}/Content/Projectiles/TearFire{Main.rand.Next(1, 3)}"){
+                Volume = 0.25f,
+                PitchVariance = 0.2f
+            };
+            SoundEngine.PlaySound(TearShoot, Projectile.Center);
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
