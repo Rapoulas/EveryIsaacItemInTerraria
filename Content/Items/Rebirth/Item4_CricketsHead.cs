@@ -6,17 +6,17 @@ using IsaacItems.Content.Globals;
 
 namespace IsaacItems.Content.Items.Rebirth
 {
-	public class MyReflection5 : ModItem
+	public class Item4_CricketsHead : ModItem
 	{ 
         public override void SetDefaults() {
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true; 
 			Item.DefaultToAccessory(26, 34);
 			Item.SetShopValues(ItemRarityColor.Purple11, Item.buyPrice(gold: 1));
-			Item.rare = ItemRarityID.Blue;
+			Item.rare = ItemRarityID.Yellow;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
-			player.GetModPlayer<MyPlayer>().hasMyReflection = Item;
+			player.GetModPlayer<MyPlayer>().hasCricketsHead = Item;
 		}
     }
 }

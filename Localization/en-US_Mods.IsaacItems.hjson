@@ -1,5 +1,5 @@
 Items: {
-	SadOnion1: {
+	Item1_SadOnion: {
 		DisplayName: Sad Onion
 		Tooltip:
 			'''
@@ -8,7 +8,7 @@ Items: {
 			'''
 	}
 
-	InnerEye2: {
+	Item2_InnerEye: {
 		DisplayName: Inner Eye
 		Tooltip:
 			'''
@@ -18,7 +18,7 @@ Items: {
 			'''
 	}
 
-	SpoonBender3: {
+	Item3_SpoonBender: {
 		DisplayName: Spoon Bender
 		Tooltip:
 			'''
@@ -27,7 +27,7 @@ Items: {
 			'''
 	}
 
-	CricketsHead4: {
+	Item4_CricketsHead: {
 		DisplayName: Cricket's Head
 		Tooltip:
 			'''
@@ -37,7 +37,7 @@ Items: {
 			'''
 	}
 
-	MyReflection5: {
+	Item5_MyReflection: {
 		DisplayName: My Reflection
 		Tooltip:
 			'''
@@ -50,7 +50,7 @@ Items: {
 			'''
 	}
 
-	NumberOne6: {
+	Item6_NumberOne: {
 		DisplayName: Number One
 		Tooltip:
 			'''
@@ -61,7 +61,7 @@ Items: {
 			'''
 	}
 
-	BloodOfTheMartyr7: {
+	Item7_BloodOfTheMartyr: {
 		DisplayName: Blood Of The Martyr
 		Tooltip:
 			'''
@@ -70,9 +70,19 @@ Items: {
 			'''
 	}
 
-	BrotherBobby8: {
+	Item8_BrotherBobby: {
 		DisplayName: Brother Bobby
 		Tooltip: Spawns a familiar that follows you around shooting tears that deal 5 damage
+	}
+
+	Item9_Skatole: {
+		DisplayName: Skatole
+		Tooltip: Turns bat-like enemies friendly
+	}
+
+	Item10_HaloOfFlies: {
+		DisplayName: Halo Of Flies
+		Tooltip: Spawns two Pretty Flies that block enemy shots.
 	}
 }
 
@@ -80,4 +90,5 @@ Projectiles: {
 	BrotherBobbyProj.DisplayName: Brother Bobby Proj
 	Tear.DisplayName: Tear
 	TearSplash.DisplayName: Tear Splash
+	HaloOfFliesProj.DisplayName: Halo Of Flies Proj
 }

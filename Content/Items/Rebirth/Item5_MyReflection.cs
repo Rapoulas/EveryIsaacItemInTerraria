@@ -6,7 +6,7 @@ using IsaacItems.Content.Globals;
 
 namespace IsaacItems.Content.Items.Rebirth
 {
-	public class NumberOne6 : ModItem
+	public class Item5_MyReflection : ModItem
 	{ 
         public override void SetDefaults() {
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true; 
@@ -16,7 +16,7 @@ namespace IsaacItems.Content.Items.Rebirth
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
-			player.GetModPlayer<MyPlayer>().hasNumberOne = Item;
+			player.GetModPlayer<MyPlayer>().hasMyReflection = Item;
 		}
     }
 }

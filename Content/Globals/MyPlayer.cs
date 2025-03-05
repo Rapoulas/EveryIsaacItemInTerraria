@@ -2,9 +2,9 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
-using System;
-using Microsoft.Xna.Framework.Media;
 using IsaacItems.Content.Familiars;
+using System.Collections.Generic;
+using System;
 
 namespace IsaacItems.Content.Globals
 {
@@ -18,6 +18,8 @@ namespace IsaacItems.Content.Globals
         public Item hasNumberOne;
         public Item hasBloodOfTheMartyr;
         public Item hasBrotherBobby;
+        public Item hasSkatole;
+        public Item hasHaloOfFlies;
         #endregion
 
         #region player stats
@@ -33,6 +35,9 @@ namespace IsaacItems.Content.Globals
         public float shotSpeedMult = 1;
         public int conjoinedProgress;
         #endregion
+
+        public List<Projectile> Orbitals = [];
+        float orbitalRotation = 0;
         public override void ResetEffects(){
             tearStat = 1;
             tearStatMulti = 1;
@@ -55,6 +60,9 @@ namespace IsaacItems.Content.Globals
             hasNumberOne = null;
             hasBloodOfTheMartyr = null;
             hasBrotherBobby = null;
+            hasSkatole = null;
+            hasHaloOfFlies = null;
+
         }
 
         public override void PostUpdateEquips()
@@ -94,15 +102,21 @@ namespace IsaacItems.Content.Globals
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<BrotherBobbyProj>(), 0, 0, Player.whoAmI);
                 }
             }
+            if (hasHaloOfFlies != null){
+                if (Player.ownedProjectileCounts[ModContent.ProjectileType<HaloOfFliesProj>()] <= 1 && Orbitals.Count < 32){
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<HaloOfFliesProj>(), 0, 0, Player.whoAmI);
+                }
+            }
 
             if (extraFlatDamage > 0 || damageMult > 1){
                 Player.GetDamage(DamageClass.Generic).Base += extraFlatDamage;
                 Player.GetDamage(DamageClass.Generic) *= damageMult;
             }
-
             extraRange *= extraRangeMult;
             tearStat *= tearStatMulti;
             HomingProj();
+            OrbitalHandler();
+
         }
 
         public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -111,6 +125,20 @@ namespace IsaacItems.Content.Globals
                 ExtraTear(source, position, velocity, type, damage, knockback);
             }
             return base.Shoot(item, source, position, velocity, type, damage, knockback);
+        }
+
+        void OrbitalHandler(){
+            if (Orbitals.Count > 0){
+                orbitalRotation += (float)Math.PI / 100f;
+                for (int i=0; i < Orbitals.Count; i++){
+                    Projectile orbital = Orbitals[i];
+                    
+                    Vector2 distFromPlayer = new(0f, -48f);
+                    float circleRotation = orbitalRotation  + (float)Math.PI * 2 / Orbitals.Count * i;
+                    Vector2 orbitalPos = distFromPlayer.RotatedBy(circleRotation);
+                    orbital.position = Vector2.Lerp(orbital.position, orbitalPos + Player.position, 0.2f);
+                }
+            }
         }
 
         public override void ModifyLuck(ref float luck)
@@ -147,7 +175,7 @@ namespace IsaacItems.Content.Globals
             }
         }
 
-        private static NPC FindClosestNPC(float maxDetectDistance, Vector2 position) {
+        private static NPC FindClosestNPC(float maxDetectDistance, Vector2 position){
 			NPC closestNPC = null;
 
 			float sqrMaxDetectDistance = maxDetectDistance * maxDetectDistance;

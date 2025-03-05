@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IsaacItems")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f25f84ebbbe08940a0992deda1c9013a47ce2c39")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0804c2011b22db87873dd6985d87250aaf671893")]
 [assembly: System.Reflection.AssemblyProductAttribute("IsaacItems")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IsaacItems")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

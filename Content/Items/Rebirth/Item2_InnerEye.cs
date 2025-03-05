@@ -6,7 +6,7 @@ using IsaacItems.Content.Globals;
 
 namespace IsaacItems.Content.Items.Rebirth
 {
-	public class SpoonBender3 : ModItem
+	public class Item2_InnerEye : ModItem
 	{ 
         public override void SetDefaults() {
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true; 
@@ -16,7 +16,7 @@ namespace IsaacItems.Content.Items.Rebirth
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
-			player.GetModPlayer<MyPlayer>().hasSpoonBender = Item;
+			player.GetModPlayer<MyPlayer>().hasInnerEye = Item;
 		}
     }
 }
