@@ -6,6 +6,7 @@ using System;
 using IsaacItems.Content.Projectiles;
 using Terraria.DataStructures;
 using IsaacItems.Content.Buffs;
+using Terraria.Audio;
 
 namespace IsaacItems.Content.Familiars
 {
@@ -21,7 +22,7 @@ namespace IsaacItems.Content.Familiars
 			Projectile.minion = true;
 			Projectile.DamageType = DamageClass.Summon;
 			Projectile.penetrate = -1;
-			Projectile.scale = 1.5f;
+			Projectile.scale = 1.25f;
 			Projectile.friendly = true;
 		}
 
@@ -56,6 +57,8 @@ namespace IsaacItems.Content.Familiars
         {
             Player owner = Main.player[Projectile.owner];
             owner.GetModPlayer<MyPlayer>().Familiars.Remove(Projectile);
+			SoundStyle OneUp = new($"{nameof(IsaacItems)}/Content/Familiars/OneUpSoundEffect");
+            SoundEngine.PlaySound(OneUp, owner.Center);
         }
 
 		public void Movement(Player owner){

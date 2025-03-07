@@ -119,6 +119,6 @@ Projectiles: {
 Buffs: {
 	OneUpCooldown: {
 		DisplayName: Extra Life on Cooldown
-		Description: "Wont save you for now!"
+		Description: Wont save you for now!
 	}
 }
