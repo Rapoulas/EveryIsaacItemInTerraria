@@ -5,16 +5,14 @@ using Microsoft.Xna.Framework;
 using System;
 using IsaacItems.Content.Projectiles;
 using Terraria.DataStructures;
+using IsaacItems.Content.Buffs;
 
 namespace IsaacItems.Content.Familiars
 {
-	public class BrotherBobbyProj : ModProjectile
+	public class OneUpProj : ModProjectile
 	{
-		Vector2 tearVelocity = Vector2.Zero;
-		bool shootIsOnCooldown = false;
         public override void SetStaticDefaults() {
 			Main.projPet[Projectile.type] = true;
-            Main.projFrames[Projectile.type] = 8;
 		}
         public sealed override void SetDefaults() {
 			Projectile.width = 32;
@@ -45,11 +43,9 @@ namespace IsaacItems.Content.Familiars
 			}
 			
 			Movement(owner);
-			HandleDirection();
-			HandleShooting(owner);
         }
 
-		public override void OnSpawn(IEntitySource source)
+        public override void OnSpawn(IEntitySource source)
         {
             Player owner = Main.player[Projectile.owner];
             
@@ -61,21 +57,6 @@ namespace IsaacItems.Content.Familiars
             Player owner = Main.player[Projectile.owner];
             owner.GetModPlayer<MyPlayer>().Familiars.Remove(Projectile);
         }
-
-		public void HandleShooting(Player owner){
-			if (owner.controlUseItem && !shootIsOnCooldown){
-				shootIsOnCooldown = true;
-				Projectile.NewProjectile(owner.GetSource_FromThis(), Projectile.Center.X-5, Projectile.Center.Y-16, tearVelocity.X, tearVelocity.Y, ModContent.ProjectileType<Tear>(), 5, 1);
-				Projectile.ai[0] = 0;
-			}
-
-			if (shootIsOnCooldown){
-				if (Projectile.ai[0] >= 45){
-					shootIsOnCooldown = false;
-				}
-				Projectile.ai[0]++;
-			}
-		}
 
 		public void Movement(Player owner){
 			int projIndex = owner.GetModPlayer<MyPlayer>().Familiars.IndexOf(Projectile);
@@ -103,52 +84,12 @@ namespace IsaacItems.Content.Familiars
 		}
 
         private bool CheckActive(Player owner) {
-			if (owner.dead || !owner.active || owner.GetModPlayer<MyPlayer>().hasBrotherBobby == null) {
+			if (owner.dead || !owner.active || owner.GetModPlayer<MyPlayer>().hasOneUp == null || owner.HasBuff(ModContent.BuffType<OneUpCooldown>())) {
                 Projectile.Kill();
 				return false;
 			}
             Projectile.timeLeft = 2;
 			return true;
-		}
-
-        private void HandleDirection(){
-			Player owner = Main.player[Projectile.owner];
-			Vector2 playerToMouse = owner.Center.DirectionTo(Main.MouseWorld);
-			playerToMouse.Normalize();
-			float rotation = playerToMouse.ToRotation();
-
-			if (rotation >= -1 * MathHelper.PiOver4 && rotation < MathHelper.PiOver4){ //Right
-				Projectile.frame = 2;
-				tearVelocity.X = 10;
-				tearVelocity.Y = 0;
-				if (Projectile.ai[0] > 0 && Projectile.ai[0] < 35){
-					Projectile.frame = 3;
-				}
-			}
-			else if (rotation >= -3 * MathHelper.PiOver4 && rotation < -1 * MathHelper.PiOver4){ //Down
-				Projectile.frame = 6;
-				tearVelocity.X = 0;
-				tearVelocity.Y = -10;
-				if (Projectile.ai[0] > 0 && Projectile.ai[0] < 35){
-					Projectile.frame = 7;
-				}
-			}
-			else if (rotation >= 3 * MathHelper.PiOver4 || rotation < -3 * MathHelper.PiOver4){ //Left
-				Projectile.frame = 4;
-				tearVelocity.X = -10;
-				tearVelocity.Y = 0;
-				if (Projectile.ai[0] > 0 && Projectile.ai[0] < 35){
-					Projectile.frame = 5;
-				}
-			}
-			else if (rotation >= MathHelper.PiOver4 && rotation < 3 * MathHelper.PiOver4){ //Up
-				Projectile.frame = 0;
-				tearVelocity.X = 0;
-				tearVelocity.Y = 10;
-				if (Projectile.ai[0] > 0 && Projectile.ai[0] < 35){
-					Projectile.frame = 1;
-				}
-			}
 		}
     }
 }

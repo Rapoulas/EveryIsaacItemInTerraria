@@ -72,17 +72,39 @@ Items: {
 
 	Item8_BrotherBobby: {
 		DisplayName: Brother Bobby
-		Tooltip: Spawns a familiar that follows you around shooting tears that deal 5 damage
+		Tooltip:
+			'''
+			'Friends 'till the end'
+			Spawns a familiar that follows you around shooting tears that deal 5 damage
+			'''
 	}
 
 	Item9_Skatole: {
 		DisplayName: Skatole
-		Tooltip: Turns bat-like enemies friendly
+		Tooltip:
+			'''
+			'Fly Love'
+			Turns bat-like enemies friendly
+			'''
 	}
 
 	Item10_HaloOfFlies: {
 		DisplayName: Halo Of Flies
-		Tooltip: Spawns two Pretty Flies that block enemy shots.
+		Tooltip:
+			'''
+			'Projectile Protection'
+			Spawns two Pretty Flies that block enemy shots.
+			'''
+	}
+
+	Item11_OneUp: {
+		DisplayName: One Up!
+		Tooltip:
+			'''
+			'Extra Life'
+			Grants an extra life
+			Has a 3 minute cooldown on death
+			'''
 	}
 }
 
@@ -91,4 +113,12 @@ Projectiles: {
 	Tear.DisplayName: Tear
 	TearSplash.DisplayName: Tear Splash
 	HaloOfFliesProj.DisplayName: Halo Of Flies Proj
+	OneUpProj.DisplayName: One Up Proj
+}
+
+Buffs: {
+	OneUpCooldown: {
+		DisplayName: Extra Life on Cooldown
+		Description: "Wont save you for now!"
+	}
 }

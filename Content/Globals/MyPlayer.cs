@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using IsaacItems.Content.Familiars;
 using System.Collections.Generic;
 using System;
+using IsaacItems.Content.Buffs;
 
 namespace IsaacItems.Content.Globals
 {
@@ -20,6 +21,7 @@ namespace IsaacItems.Content.Globals
         public Item hasBrotherBobby;
         public Item hasSkatole;
         public Item hasHaloOfFlies;
+        public Item hasOneUp;
         #endregion
 
         #region player stats
@@ -37,6 +39,7 @@ namespace IsaacItems.Content.Globals
         #endregion
 
         public List<Projectile> Orbitals = [];
+        public List<Projectile> Familiars = [];
         float orbitalRotation = 0;
         public override void ResetEffects(){
             tearStat = 1;
@@ -62,7 +65,7 @@ namespace IsaacItems.Content.Globals
             hasBrotherBobby = null;
             hasSkatole = null;
             hasHaloOfFlies = null;
-
+            hasOneUp = null;
         }
 
         public override void PostUpdateEquips()
@@ -107,6 +110,11 @@ namespace IsaacItems.Content.Globals
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<HaloOfFliesProj>(), 0, 0, Player.whoAmI);
                 }
             }
+            if (hasOneUp != null){
+                if (Player.ownedProjectileCounts[ModContent.ProjectileType<OneUpProj>()] <= 0 && !Player.HasBuff(ModContent.BuffType<OneUpCooldown>())){
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<OneUpProj>(), 0, 0, Player.whoAmI);
+                }
+            }
 
             if (extraFlatDamage > 0 || damageMult > 1){
                 Player.GetDamage(DamageClass.Generic).Base += extraFlatDamage;
@@ -117,6 +125,16 @@ namespace IsaacItems.Content.Globals
             HomingProj();
             OrbitalHandler();
 
+        }
+
+        public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genDust, ref PlayerDeathReason damageSource)
+        {
+            if (hasOneUp != null && !Player.HasBuff(ModContent.BuffType<OneUpCooldown>())){
+                Player.AddBuff(ModContent.BuffType<OneUpCooldown>(), 10800);
+                Player.Heal(Player.statLifeMax2);
+                return false;
+            }
+            return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genDust, ref damageSource);
         }
 
         public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
