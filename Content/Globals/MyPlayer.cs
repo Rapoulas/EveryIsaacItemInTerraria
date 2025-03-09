@@ -22,6 +22,7 @@ namespace IsaacItems.Content.Globals
         public Item hasSkatole;
         public Item hasHaloOfFlies;
         public Item hasOneUp;
+        public Item hasMagicMushroom;
         #endregion
 
         #region player stats
@@ -36,11 +37,14 @@ namespace IsaacItems.Content.Globals
         public float luckMult = 1;
         public float shotSpeedMult = 1;
         public int conjoinedProgress;
+        public float speedMult = 1;
+        public int extraHp = 0;
         #endregion
 
         public List<Projectile> Orbitals = [];
         public List<Projectile> Familiars = [];
         float orbitalRotation = 0;
+        
         public override void ResetEffects(){
             tearStat = 1;
             tearStatMulti = 1;
@@ -50,6 +54,8 @@ namespace IsaacItems.Content.Globals
             extraRangeMult = 1;
             luckMult = 1;
             shotSpeedMult = 1;
+            speedMult = 1;
+            extraHp = 0;
             
             homingTears = false;
             extraTearCount = 0;
@@ -66,6 +72,9 @@ namespace IsaacItems.Content.Globals
             hasSkatole = null;
             hasHaloOfFlies = null;
             hasOneUp = null;
+            hasMagicMushroom = null;
+
+            base.ResetEffects();
         }
 
         public override void PostUpdateEquips()
@@ -115,16 +124,29 @@ namespace IsaacItems.Content.Globals
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<OneUpProj>(), 0, 0, Player.whoAmI);
                 }
             }
+            if (hasMagicMushroom != null){
+                extraFlatDamage += 3;
+                damageMult *= 1.5f;
+                extraRange += 0.25f;
+                speedMult += 0.3f;
+                extraHp += 40;
+            }
 
+            if (speedMult > 2){
+                speedMult = 2;
+            }
             if (extraFlatDamage > 0 || damageMult > 1){
                 Player.GetDamage(DamageClass.Generic).Base += extraFlatDamage;
                 Player.GetDamage(DamageClass.Generic) *= damageMult;
             }
+
             extraRange *= extraRangeMult;
             tearStat *= tearStatMulti;
             HomingProj();
             OrbitalHandler();
 
+            Player.statLifeMax2 += extraHp;
+            Player.moveSpeed *= speedMult;
         }
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genDust, ref PlayerDeathReason damageSource)
