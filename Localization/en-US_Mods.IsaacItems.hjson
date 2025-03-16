@@ -110,14 +110,25 @@ Items: {
 	Item12_MagicMushroom: {
 		DisplayName: Magic Mushroom
 		Tooltip:
-		'''
-		'All stats up!'
-		+40 Health
-		+2.5 Range
-		+0.3 Speed
-		+3 Damage
-		1.5x Damage
-		'''
+			'''
+			'All stats up!'
+			+40 Health
+			+2.5 Range
+			+0.3 Speed
+			+3 Damage
+			1.5x Damage
+			'''
+	}
+
+	Item13_TheVirus: {
+		DisplayName: The Virus
+		Tooltip:
+			'''
+			'Poison Touch + Speed Up'
+			+0.2 Speed
+			Inflicts poison on enemies on contact damage
+			Poison damage based on your max health
+			'''
 	}
 }
 
@@ -133,5 +144,10 @@ Buffs: {
 	OneUpCooldown: {
 		DisplayName: Extra Life on Cooldown
 		Description: Wont save you for now!
+	}
+
+	TheVirusPoison: {
+		Description: Mods.IsaacItems.Buffs.TheVirusPoison.Description
+		DisplayName: The Virus Poison
 	}
 }

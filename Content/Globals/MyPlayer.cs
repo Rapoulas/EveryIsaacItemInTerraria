@@ -23,6 +23,7 @@ namespace IsaacItems.Content.Globals
         public Item hasHaloOfFlies;
         public Item hasOneUp;
         public Item hasMagicMushroom;
+        public Item hasTheVirus;
         #endregion
 
         #region player stats
@@ -37,6 +38,7 @@ namespace IsaacItems.Content.Globals
         public float luckMult = 1;
         public float shotSpeedMult = 1;
         public int conjoinedProgress;
+        public int spunProgress;
         public float speedMult = 1;
         public int extraHp = 0;
         #endregion
@@ -59,7 +61,9 @@ namespace IsaacItems.Content.Globals
             
             homingTears = false;
             extraTearCount = 0;
+
             conjoinedProgress = 0;
+            spunProgress = 0;
 
             hasSadOnion = null;
             hasInnerEye = null;
@@ -73,6 +77,7 @@ namespace IsaacItems.Content.Globals
             hasHaloOfFlies = null;
             hasOneUp = null;
             hasMagicMushroom = null;
+            hasTheVirus = null;
 
             base.ResetEffects();
         }
@@ -131,6 +136,11 @@ namespace IsaacItems.Content.Globals
                 speedMult += 0.3f;
                 extraHp += 40;
             }
+            if (hasTheVirus != null){
+                speedMult += 0.2f;
+                spunProgress += 1;
+            }
+
 
             if (speedMult > 2){
                 speedMult = 2;
@@ -147,6 +157,16 @@ namespace IsaacItems.Content.Globals
 
             Player.statLifeMax2 += extraHp;
             Player.moveSpeed *= speedMult;
+        }
+
+        public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
+        {
+            if (hasTheVirus != null){
+                npc.SimpleStrikeNPC(48, npc.direction, false, 5, DamageClass.Default, true, 0, true);
+                npc.AddBuff(ModContent.BuffType<TheVirusPoison>(), 300);
+            }
+
+            base.OnHitByNPC(npc, hurtInfo);
         }
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genDust, ref PlayerDeathReason damageSource)
