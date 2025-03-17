@@ -24,6 +24,7 @@ namespace IsaacItems.Content.Globals
         public Item hasOneUp;
         public Item hasMagicMushroom;
         public Item hasTheVirus;
+        public Item hasRoidRage;
         #endregion
 
         #region player stats
@@ -78,6 +79,7 @@ namespace IsaacItems.Content.Globals
             hasOneUp = null;
             hasMagicMushroom = null;
             hasTheVirus = null;
+            hasRoidRage = null;
 
             base.ResetEffects();
         }
@@ -138,6 +140,11 @@ namespace IsaacItems.Content.Globals
             }
             if (hasTheVirus != null){
                 speedMult += 0.2f;
+                spunProgress += 1;
+            }
+            if (hasRoidRage != null){
+                speedMult += 0.3f;
+                extraRange += 0.25f;
                 spunProgress += 1;
             }
 

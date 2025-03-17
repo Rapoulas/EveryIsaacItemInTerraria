@@ -130,6 +130,16 @@ Items: {
 			Poison damage based on your max health
 			'''
 	}
+
+	Item14_RoidRage: {
+		DisplayName: Roid Rage
+		Tooltip:
+			'''
+			'Speed and Range Up'
+			+0.3 Speed
+			+2.5 Range
+			'''
+	}
 }
 
 Projectiles: {
