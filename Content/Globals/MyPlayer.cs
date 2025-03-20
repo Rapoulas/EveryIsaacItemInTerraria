@@ -25,6 +25,8 @@ namespace IsaacItems.Content.Globals
         public Item hasMagicMushroom;
         public Item hasTheVirus;
         public Item hasRoidRage;
+        public Item hasLessThan3;
+        public Item hasRawLiver;
         #endregion
 
         #region player stats
@@ -80,6 +82,8 @@ namespace IsaacItems.Content.Globals
             hasMagicMushroom = null;
             hasTheVirus = null;
             hasRoidRage = null;
+            hasLessThan3 = null;
+            hasRawLiver = null;
 
             base.ResetEffects();
         }
@@ -146,6 +150,12 @@ namespace IsaacItems.Content.Globals
                 speedMult += 0.3f;
                 extraRange += 0.25f;
                 spunProgress += 1;
+            }
+            if (hasLessThan3 != null){
+                extraHp += 40;
+            }
+            if (hasRawLiver != null){
+                extraHp += 80;
             }
 
 
