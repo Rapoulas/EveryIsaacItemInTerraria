@@ -144,19 +144,29 @@ Items: {
 	Item15_LessThan3: {
 		DisplayName: <3
 		Tooltip:
-		'''
-		'HP up'
-		+40 Health
-		'''
+			'''
+			'HP up'
+			+40 Health
+			'''
 	}
 
 	Item16_RawLiver: {
 		DisplayName: Raw Liver
 		Tooltip:
+			'''
+			'HP up'
+			+80 Health
+			'''
+	}
+
+	Item17_SkeletonKey: {
+		Tooltip:
 		'''
-		'HP up'
-		+80 Health
+		"99 Keys"
+		Right click to open
+		Contains 99 random keys
 		'''
+		DisplayName: Skeleton Key
 	}
 }
 
