@@ -161,12 +161,30 @@ Items: {
 
 	Item17_SkeletonKey: {
 		Tooltip:
-		'''
-		"99 Keys"
-		Right click to open
-		Contains 99 random keys
-		'''
+			'''
+			"99 Keys"
+			Right click to open
+			Contains 99 random keys
+			'''
 		DisplayName: Skeleton Key
+	}
+
+	Item19_Boom: {
+		Tooltip:
+		'''
+		"10 bombs"
+		+10 random bombs
+		'''
+		DisplayName: Boom!
+	}
+
+	Item18_Dollar: {
+		Tooltip:
+		'''
+		"$$$"
+		+100¢
+		'''
+		DisplayName: A Dollar
 	}
 }
 
