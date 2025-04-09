@@ -189,11 +189,20 @@ Items: {
 
 	Item20_Transcendence: {
 		Tooltip:
-		'''
-		"We all float down here..."
-		Grants flight
-		'''
+			'''
+			"We all float down here..."
+			Grants flight
+			'''
 		DisplayName: Transcendence
+	}
+
+	Item21_Compass: {
+		Tooltip:
+		'''
+		"The end is near"
+		Reveals a random amount of chests on the map
+		'''
+		DisplayName: Compass
 	}
 }
 
