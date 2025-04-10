@@ -162,7 +162,7 @@ Items: {
 	Item17_SkeletonKey: {
 		Tooltip:
 			'''
-			"99 Keys"
+			'99 Keys'
 			Right click to open
 			Contains 99 random keys
 			'''
@@ -172,7 +172,7 @@ Items: {
 	Item19_Boom: {
 		Tooltip:
 			'''
-			"10 bombs"
+			'10 bombs'
 			+10 random bombs
 			'''
 		DisplayName: Boom!
@@ -181,7 +181,7 @@ Items: {
 	Item18_Dollar: {
 		Tooltip:
 			'''
-			"$$$"
+			'$$$'
 			+100¢
 			'''
 		DisplayName: A Dollar
@@ -190,7 +190,7 @@ Items: {
 	Item20_Transcendence: {
 		Tooltip:
 			'''
-			"We all float down here..."
+			'We all float down here...'
 			Grants flight
 			'''
 		DisplayName: Transcendence
@@ -198,11 +198,56 @@ Items: {
 
 	Item21_Compass: {
 		Tooltip:
-		'''
-		"The end is near"
-		Reveals a random amount of chests on the map
-		'''
+			'''
+			'The end is near'
+			Reveals a random amount of chests on the map
+			'''
 		DisplayName: Compass
+	}
+
+	Item22_Lunch: {
+		Tooltip:
+			'''
+			'HP up'
+			+40 Health
+			'''
+		DisplayName: Lunch
+	}
+
+	Item26_RottenMeat: {
+		Tooltip:
+			'''
+			'HP up'
+			+40 Health
+			'''
+		DisplayName: Rotten Meat
+	}
+
+	Item25_Breakfast: {
+		Tooltip:
+			'''
+			'HP up'
+			+40 Health
+			'''
+		DisplayName: Breakfast
+	}
+
+	Item24_Dessert: {
+		Tooltip:
+			'''
+			'HP up'
+			+40 Health
+			'''
+		DisplayName: Dessert
+	}
+
+	Item23_Dinner: {
+		Tooltip:
+			'''
+			'HP up'
+			+40 Health
+			'''
+		DisplayName: Dinner
 	}
 }
 

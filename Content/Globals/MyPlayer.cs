@@ -27,6 +27,11 @@ namespace IsaacItems.Content.Globals
         public Item hasRoidRage;
         public Item hasLessThan3;
         public Item hasRawLiver;
+        public Item hasLunch;
+        public Item hasDinner;
+        public Item hasDessert;
+        public Item hasBreakfast;
+        public Item hasRottenMeat;
         #endregion
 
         #region player stats
@@ -84,80 +89,18 @@ namespace IsaacItems.Content.Globals
             hasRoidRage = null;
             hasLessThan3 = null;
             hasRawLiver = null;
+            hasLunch = null;
+            hasDinner = null;
+            hasDessert = null;
+            hasBreakfast = null;
+            hasRottenMeat = null;
 
             base.ResetEffects();
         }
 
         public override void PostUpdateEquips()
         {
-            if (hasSadOnion != null){
-                tearStat += 0.15f;
-            }
-            if (hasInnerEye != null){
-                tearStat *= 0.51f;
-                extraTearCount += 2;
-            }
-            if (hasSpoonBender != null ){
-                homingTears = true;
-            }
-            if (hasCricketsHead != null){
-                extraFlatDamage += 5;
-                damageMult *= 1.5f;
-            }
-            if (hasMyReflection != null){
-                extraFlatDamage += 5;
-                luckMult *= 0.9f;
-                extraRange += 0.15f;
-                extraRangeMult *= 2;
-                shotSpeedMult *= 1.6f;
-            }
-            if (hasNumberOne != null){
-                extraRange -= 0.15f;
-                extraRangeMult *= 0.8f;
-                tearStat += 0.3f;
-            }
-            if (hasBloodOfTheMartyr != null){
-                extraFlatDamage += 10;
-            }
-            if (hasBrotherBobby != null){
-                conjoinedProgress += 1;
-                if (Player.ownedProjectileCounts[ModContent.ProjectileType<BrotherBobbyProj>()] <= 0){
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<BrotherBobbyProj>(), 0, 0, Player.whoAmI);
-                }
-            }
-            if (hasHaloOfFlies != null){
-                if (Player.ownedProjectileCounts[ModContent.ProjectileType<HaloOfFliesProj>()] <= 1 && Orbitals.Count < 32){
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<HaloOfFliesProj>(), 0, 0, Player.whoAmI);
-                }
-            }
-            if (hasOneUp != null){
-                if (Player.ownedProjectileCounts[ModContent.ProjectileType<OneUpProj>()] <= 0 && !Player.HasBuff(ModContent.BuffType<OneUpCooldown>())){
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<OneUpProj>(), 0, 0, Player.whoAmI);
-                }
-            }
-            if (hasMagicMushroom != null){
-                extraFlatDamage += 3;
-                damageMult *= 1.5f;
-                extraRange += 0.25f;
-                speedMult += 0.3f;
-                extraHp += 40;
-            }
-            if (hasTheVirus != null){
-                speedMult += 0.2f;
-                spunProgress += 1;
-            }
-            if (hasRoidRage != null){
-                speedMult += 0.3f;
-                extraRange += 0.25f;
-                spunProgress += 1;
-            }
-            if (hasLessThan3 != null){
-                extraHp += 40;
-            }
-            if (hasRawLiver != null){
-                extraHp += 80;
-            }
-
+            RebirthItems();
 
             if (speedMult > 2){
                 speedMult = 2;
@@ -269,6 +212,91 @@ namespace IsaacItems.Content.Globals
 				}
 			}
             return closestNPC;
+        }
+
+        void RebirthItems(){
+            if (hasSadOnion != null){
+                tearStat += 0.15f;
+            }
+            if (hasInnerEye != null){
+                tearStat *= 0.51f;
+                extraTearCount += 2;
+            }
+            if (hasSpoonBender != null ){
+                homingTears = true;
+            }
+            if (hasCricketsHead != null){
+                extraFlatDamage += 5;
+                damageMult *= 1.5f;
+            }
+            if (hasMyReflection != null){
+                extraFlatDamage += 5;
+                luckMult *= 0.9f;
+                extraRange += 0.15f;
+                extraRangeMult *= 2;
+                shotSpeedMult *= 1.6f;
+            }
+            if (hasNumberOne != null){
+                extraRange -= 0.15f;
+                extraRangeMult *= 0.8f;
+                tearStat += 0.3f;
+            }
+            if (hasBloodOfTheMartyr != null){
+                extraFlatDamage += 10;
+            }
+            if (hasBrotherBobby != null){
+                conjoinedProgress += 1;
+                if (Player.ownedProjectileCounts[ModContent.ProjectileType<BrotherBobbyProj>()] <= 0){
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<BrotherBobbyProj>(), 0, 0, Player.whoAmI);
+                }
+            }
+            if (hasHaloOfFlies != null){
+                if (Player.ownedProjectileCounts[ModContent.ProjectileType<HaloOfFliesProj>()] <= 1 && Orbitals.Count < 32){
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<HaloOfFliesProj>(), 0, 0, Player.whoAmI);
+                }
+            }
+            if (hasOneUp != null){
+                if (Player.ownedProjectileCounts[ModContent.ProjectileType<OneUpProj>()] <= 0 && !Player.HasBuff(ModContent.BuffType<OneUpCooldown>())){
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<OneUpProj>(), 0, 0, Player.whoAmI);
+                }
+            }
+            if (hasMagicMushroom != null){
+                extraFlatDamage += 3;
+                damageMult *= 1.5f;
+                extraRange += 0.25f;
+                speedMult += 0.3f;
+                extraHp += 40;
+            }
+            if (hasTheVirus != null){
+                speedMult += 0.2f;
+                spunProgress += 1;
+            }
+            if (hasRoidRage != null){
+                speedMult += 0.3f;
+                extraRange += 0.25f;
+                spunProgress += 1;
+            }
+            if (hasLessThan3 != null){
+                extraHp += 40;
+            }
+            if (hasRawLiver != null){
+                extraHp += 80;
+            }
+            if (hasLunch != null){
+                extraHp += 40;
+            }
+            if (hasDinner != null){
+                extraHp += 40;
+            }
+            if (hasDessert != null){
+                extraHp += 40;
+            }
+            if (hasBreakfast != null){
+                extraHp += 40;
+            }
+            if (hasRottenMeat != null){
+                extraHp += 40;
+            }
         }
     }
 }
