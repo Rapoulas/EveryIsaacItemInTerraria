@@ -249,6 +249,24 @@ Items: {
 			'''
 		DisplayName: Dinner
 	}
+
+	Item27_WoodenSpoon: {
+		DisplayName: Wooden Spoon
+		Tooltip:
+		'''
+		'Speed up'
+		+0.3 Speed
+		'''
+	}
+
+	Item28_Belt: {
+		DisplayName: Belt
+		Tooltip:
+		'''
+		'Speed up'
+		+0.3 Speed
+		'''
+	}
 }
 
 Projectiles: {

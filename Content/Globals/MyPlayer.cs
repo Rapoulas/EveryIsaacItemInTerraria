@@ -32,6 +32,8 @@ namespace IsaacItems.Content.Globals
         public Item hasDessert;
         public Item hasBreakfast;
         public Item hasRottenMeat;
+        public Item hasWoodenSpoon;
+        public Item hasBelt;
         #endregion
 
         #region player stats
@@ -94,6 +96,8 @@ namespace IsaacItems.Content.Globals
             hasDessert = null;
             hasBreakfast = null;
             hasRottenMeat = null;
+            hasWoodenSpoon = null;
+            hasBelt = null;
 
             base.ResetEffects();
         }
@@ -296,6 +300,12 @@ namespace IsaacItems.Content.Globals
             }
             if (hasRottenMeat != null){
                 extraHp += 40;
+            }
+            if (hasWoodenSpoon != null){
+                speedMult += 0.3f;
+            }
+            if (hasBelt != null){
+                speedMult += 0.3f;
             }
         }
     }
